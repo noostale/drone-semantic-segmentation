@@ -1,2 +1,2 @@
 # drone-sem-seg-nets
-Semantic Segmentation of drone imagery using different Machine Learning techniques
+Semantic Segmentation of drone imagery using different Computer Vision techniques
