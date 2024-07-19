@@ -106,7 +106,16 @@ As metrics to evaluate the models, the following are used:
 
 ## Results
 
-The results are shown in the following table:
+A set of images from the test-set have been used to evaluate the models and compare their performance. A sample from the input images, ground truth masks, and predicted masks are shown below for each model:
+
+| Model | ■Input | ■Truth | Output |
+| ----- | ------------- | -------------- | ----------------- |
+| **SimpleFCN** | ![alt text](images/input_1.png) | ![alt text](images/truth_1.png) | ![alt text](images/fcn_output_1.png) |
+| **FPN** | ![alt text](images/input_1.png) | ![alt text](images/truth_1.png) | ![alt text](images/fpn_output_1.png) |
+| **DeepLabV3Plus** | ![alt text](images/input_1.png) | ![alt text](images/truth_1.png) | ![alt text](images/v3_output_1.png) |
+
+
+The metrics for the three models are shown in the following table:
 
 
 | Model Name in Code | Test Loss           | Pixel-wise Accuracy | Mean IoU            |
