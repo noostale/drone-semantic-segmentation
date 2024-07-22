@@ -136,7 +136,7 @@ These days the challenges of the semantic segmentation are still open and there 
 ## Gradio UI
 
 To show results in a user-friendly way, has been implemented an user interface. This thanks to Gradio, an open-source Python package that allows to quickly create easy-to-use and customizable user interface components for using models.
-Interface functions allow the upload of images from the dataset and the choice of a model from a drop-down menu with the list of implemented models. By clicking the submit button, it will be possible to obtain the greyscale mask image as a result of Semantic Segmentation.
+Interface functions allow the upload of images from the dataset and the choice of a model from a drop-down menu with the list of implemented models. By clicking the submit button, it will be possible to obtain the grayscale mask image as a result of Semantic Segmentation.
 
 
 ## Authors
