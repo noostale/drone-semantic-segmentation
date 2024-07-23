@@ -2,15 +2,6 @@
 
 The following repository contains the code to perform semantic segmentation of drone aerial images using deep learning models. The code is implemented in Python using the Pytorch library and the Segmentation Models library. The code is available as a Jupyter Notebook file named `drone_sem_seg_nets.ipynb`.
 
-The code is divided into the following sections:
-
-- **Environment Setup:** sets up the Python environment and installs the required libraries.
-- **Data Preprocessing:** loads the dataset, preprocesses the images, and splits the dataset into training, validation, and test subsets.
-- **Data Augmentation:** augments the train-set using random rotation, random flip, random brightness, and random contrast.
-- **Model Definition:** defines the models for semantic segmentation of drone aerial images.
-- **Model Training:** trains the models on the train-set and evaluates them on the validation-set.
-- **Model Evaluation:** evaluates the models on the test-set using the test loss, pixel-wise accuracy, and mean IoU.
-- **Gradio UI:** creates a user interface to interact with the deep learning models and visualize the results.
 
 ## Introduction
 
@@ -95,11 +86,9 @@ To implement the baseline model, pure Pytorch has been used. The more complex mo
 
 ![Segmentation Models logo](images/image.png)
 
-- **SimpleFCN** (*Simple Fully Convolutional Networks*) is a simple fully convolutional network that uses convolutional layers to learn the features of the input image and upsampling layers to generate the pixel-wise segmentation mask. In this project this is the baseline model, used as a reference for the other models to check how much they can improve the results.
-
-- **FPN** (*Feature Pyramid Networks*) is a deep learning model that uses a top-down architecture with lateral connections to build high-level semantic feature maps at different scales. The model combines the features from different levels of the network to improve the segmentation performance.
-
-- **DeepLabV3Plus** is a state-of-the-art deep learning model for semantic image segmentation that uses an encoder-decoder architecture with atrous separable convolution to capture multi-scale contextual information. The model also uses a feature pyramid network to combine features from different levels of the network.
+- **Simple FCN**: A simple fully convolutional network that serves as our baseline model. It uses convolutional layers to learn the features of the input image and upsampling layers to generate the pixel-wise segmentation mask.
+- **FPN (Feature Pyramid Networks)**: This model uses a top-down architecture with lateral connections to build high-level semantic feature maps at different scales, improving segmentation performance.
+- **DeepLabV3Plus**: A state-of-the-art model with an encoder-decoder architecture that uses atrous convolution to capture multi-scale contextual information.
 
 
 The implemented baseline and models references can be found in the following table, with the corresponding name in code, paper title, authors, year, conference, and DOI:
@@ -137,7 +126,7 @@ As metrics to evaluate the models, the following are used:
 
 ## Results
 
-A set of images from the test-set have been used to evaluate the models and compare their performance. A sample from the input images, ground truth masks, and predicted masks are shown below for each model:
+A sample from the input images, ground truth masks, and predicted masks from the test-set are shown below for each model:
 
 | Model | ■Input | ■Truth | Output |
 | ----- | ------------- | -------------- | ----------------- |
@@ -157,7 +146,12 @@ The metrics for the three models are shown in the following table:
 
 ## Conclusions
 
-In this project, we have developed and compared deep learning models for semantic segmentation of drone aerial images. The models have been trained and evaluated on a dataset of drone aerial images and their corresponding pixel-wise masks. The results show that the FPN and DeepLabV3Plus models outperform the SimpleFCN model in terms of pixel-wise accuracy and mean IoU. The FPN model achieves the highest pixel-wise accuracy and mean IoU among the three models. The results demonstrate the effectiveness of deep learning models for semantic segmentation of drone aerial images.
+In this project, we developed and compared several deep learning models for semantic segmentation. Our findings revealed that the FPN (Feature Pyramid Network) and DeepLab V3+ models significantly outperformed the Simple FCN baseline model in both pixel-wise accuracy and mean Intersection over Union (IoU). 
+
+Notably, the FPN model achieved the highest scores across all metrics, highlighting the superior performance and efficacy of advanced deep learning architectures in semantic segmentation tasks when compared to simpler structures like FCNs.
+
+Note that the DeepLabV3Plus model should be better than the FPN model, probably using more epochs we would see this to happen, but we lack of computational power.
+
 
 ## Future Work
 
@@ -168,6 +162,36 @@ These days the challenges of the semantic segmentation are still open and there 
 
 To show results in a user-friendly way, has been implemented an user interface. This thanks to Gradio, an open-source Python package that allows to quickly create easy-to-use and customizable user interface components for using models.
 Interface functions allow the upload of images from the dataset and the choice of a model from a drop-down menu with the list of implemented models. By clicking the submit button, it will be possible to obtain the grayscale mask image as a result of Semantic Segmentation.
+
+## Code Structure
+
+The code is divided into the following sections:
+
+- **Environment Setup:** sets up the Python environment and installs the required libraries.
+- **Data Preprocessing:** loads the dataset, preprocesses the images, and splits the dataset into training, validation, and test subsets.
+- **Data Augmentation:** augments the train-set using random rotation, random flip, random brightness, and random contrast.
+- **Model Definition:** defines the models for semantic segmentation of drone aerial images.
+- **Model Training:** trains the models on the train-set and evaluates them on the validation-set.
+- **Model Evaluation:** evaluates the models on the test-set using the test loss, pixel-wise accuracy, and mean IoU.
+- **Gradio UI:** creates a user interface to interact with the deep learning models and visualize the results.
+  
+## How to Run
+
+To run the code, you need to install the required libraries and run the Jupyter Notebook file `drone_sem_seg_nets.ipynb` in a Jupyter Notebook environment. The code uses these main libraries:
+
+- **Pytorch**: deep learning library
+- **Torchvision**: computer vision library
+- **Segmentation Models**: deep learning models for semantic segmentation
+- **Pandas**: data manipulation library
+- **Numpy**: numerical computation library
+- **Matplotlib**: data visualization library
+- **Scikit-learn**: machine learning library used to compute metrics
+- **PIL**: Python Imaging Library
+- **Gradio**: user interface library
+
+The code can be run on a local machine with a GPU or on a cloud platform like Kaggle or Google Colab. The provided dataset.zip file contains the train data already resized, if you would like to use the original dataset you can set the `download_dataset_from_kaggle` and `resize_images` variables to true, this will download the dataset from the Kaggle website and resize the images to 512x512 pixels.
+
+To correcly download the dataset although, you need to have a Kaggle account and a Kaggle API key. You can find more information on how to get the API key [here](https://www.kaggle.com/docs/api). Once you have the API key, you can upload the `kaggle.json` into your home environment or set manually the `os.environ['KAGGLE_USERNAME']` and `os.environ['KAGGLE_KEY']` variables with your Kaggle username and API key.
 
 
 ## Authors
