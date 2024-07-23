@@ -1,6 +1,26 @@
-#  DroneSemSegNets - Semantic Segmentation of Drone Aerial Images
+#  DroneSemSegNets - Semantic Segmentation of Drone Aerial Images <!-- omit from toc --> 
 
 The following repository contains the code to perform semantic segmentation of drone aerial images using deep learning models. The code is implemented in Python using the Pytorch library and the Segmentation Models library. The code is available as a Jupyter Notebook file named `drone_sem_seg_nets.ipynb`.
+
+**Authors:** Enrico Maria Aldorasi, Emanuele Frasca
+
+## Table of Contents <!-- omit from toc -->
+- [Introduction](#introduction)
+- [Dataset](#dataset)
+      - [Sample Images and Masks](#sample-images-and-masks)
+      - [Classes Mapping](#classes-mapping)
+- [Data Preparation and Preprocessing](#data-preparation-and-preprocessing)
+- [Data Augmentation](#data-augmentation)
+- [Implemented Models](#implemented-models)
+- [Models Training](#models-training)
+- [Models Evaluation Metrics](#models-evaluation-metrics)
+- [Results](#results)
+- [Conclusions](#conclusions)
+- [Future Work](#future-work)
+- [Gradio UI](#gradio-ui)
+- [Code Structure](#code-structure)
+- [How to Run](#how-to-run)
+
 
 
 ## Introduction
@@ -192,8 +212,3 @@ To run the code, you need to install the required libraries and run the Jupyter 
 The code can be run on a local machine with a GPU or on a cloud platform like Kaggle or Google Colab. The provided dataset.zip file contains the train data already resized, if you would like to use the original dataset you can set the `download_dataset_from_kaggle` and `resize_images` variables to true, this will download the dataset from the Kaggle website and resize the images to 512x512 pixels.
 
 To correcly download the dataset although, you need to have a Kaggle account and a Kaggle API key. You can find more information on how to get the API key [here](https://www.kaggle.com/docs/api). Once you have the API key, you can upload the `kaggle.json` into your home environment or set manually the `os.environ['KAGGLE_USERNAME']` and `os.environ['KAGGLE_KEY']` variables with your Kaggle username and API key.
-
-
-## Authors
-
-Enrico Maria Aldorasi, Emanuele Frasca
