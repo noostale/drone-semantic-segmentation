@@ -1,10 +1,11 @@
-#  DroneSemSegNets - Semantic Segmentation of Drone Aerial Images <!-- omit from toc --> 
+# DroneSemSegNets - Semantic Segmentation of Drone Aerial Images <!-- omit from toc -->
 
 The following repository contains the code to perform semantic segmentation of drone aerial images using deep learning models. The code is implemented in Python using the Pytorch library and the Segmentation Models library. The code is available as a Jupyter Notebook file named `drone_sem_seg_nets.ipynb`.
 
 **Authors:** Enrico Maria Aldorasi, Emanuele Frasca
 
 ## Table of Contents <!-- omit from toc -->
+
 - [Introduction](#introduction)
 - [Dataset](#dataset)
       - [Sample Images and Masks](#sample-images-and-masks)
@@ -21,11 +22,9 @@ The following repository contains the code to perform semantic segmentation of d
 - [Code Structure](#code-structure)
 - [How to Run](#how-to-run)
 
-
-
 ## Introduction
 
-The semantic segmentation is the process of classifying each pixel of an image into a specific class. This is a fundamental task in computer vision and it is used in several applications such as autonomous driving, medical imaging, and satellite image analysis. The semantic segmentation is a challenging task because it requires a deep understanding of the image content and it is computationally expensive. 
+The semantic segmentation is the process of classifying each pixel of an image into a specific class. This is a fundamental task in computer vision and it is used in several applications such as autonomous driving, medical imaging, and satellite image analysis. The semantic segmentation is a challenging task because it requires a deep understanding of the image content and it is computationally expensive.
 
 In this project, we focus on the semantic segmentation of drone aerial images. The images have been acquired from a high altitude and contain several objects such as buildings, roads, cars, trees and others. The goal of this project is to develop and compare deep learning models able to perform with a discrete accuracy the semantic segmentation of the given images.
 
@@ -35,7 +34,7 @@ The deep learning models are trained on a dataset of drone aerial images and the
 
 ![dataset_cover](images/dataset_cover.png)
 
-The choosen dataset is the [Semantic Drone Dataset](http://dronedataset.icg.tugraz.at/) built by the Austrian Institute of Computer Graphics and Vision (ICG) at Graz University of Technology. 
+The choosen dataset is the [Semantic Drone Dataset](http://dronedataset.icg.tugraz.at/) built by the Austrian Institute of Computer Graphics and Vision (ICG) at Graz University of Technology.
 The dtaset focuses on semantic understanding of urban scenes for increasing the safety of autonomous drone flight and landing procedures. The imagery depicts  more than 20 houses from nadir (bird's eye) view acquired at an altitude of 5 to 30 meters above ground. A high resolution camera was used to acquire images at a size of 6000x4000px (24Mpx). The training set contains 400 publicly available images and the test set is made up of 200 private images. Each image is accompanied by a pixel-wise semantic segmentation mask with 24 classes annotated in both RGB and greyscale format.
 
 ##### Sample Images and Masks
@@ -47,32 +46,32 @@ The dtaset focuses on semantic understanding of urban scenes for increasing the 
 
 ##### Classes Mapping
 
-| Name          | R   | G   | B   | Mask Value  |
-|---------------|-----|-----|-----|-------------|
-| unlabeled     | 0   | 0   | 0   | 0           |
-| paved-area    | 128 | 64  | 128 | 1           |
-| dirt          | 130 | 76  | 0   | 2           |
-| grass         | 0   | 102 | 0   | 3           |
-| gravel        | 112 | 103 | 87  | 4           |
-| water         | 28  | 42  | 168 | 5           |
-| rocks         | 48  | 41  | 30  | 6           |
-| pool          | 0   | 50  | 89  | 7           |
-| vegetation    | 107 | 142 | 35  | 8           |
-| roof          | 70  | 70  | 70  | 9           |
-| wall          | 102 | 102 | 156 | 10          |
-| window        | 254 | 228 | 12  | 11          |
-| door          | 254 | 148 | 12  | 12          |
-| fence         | 190 | 153 | 153 | 13          |
-| fence-pole    | 153 | 153 | 153 | 14          |
-| person        | 255 | 22  | 96  | 15          |
-| dog           | 102 | 51  | 0   | 16          |
-| car           | 9   | 143 | 150 | 17          |
-| bicycle       | 119 | 11  | 32  | 18          |
-| tree          | 51  | 51  | 0   | 19          |
-| bald-tree     | 190 | 250 | 190 | 20          |
-| ar-marker     | 112 | 150 | 146 | 21          |
-| obstacle      | 2   | 135 | 115 | 22          |
-| conflicting   | 255 | 0   | 0   | 23          |
+| Name        | R   | G   | B   | Mask Value |
+| ----------- | --- | --- | --- | ---------- |
+| unlabeled   | 0   | 0   | 0   | 0          |
+| paved-area  | 128 | 64  | 128 | 1          |
+| dirt        | 130 | 76  | 0   | 2          |
+| grass       | 0   | 102 | 0   | 3          |
+| gravel      | 112 | 103 | 87  | 4          |
+| water       | 28  | 42  | 168 | 5          |
+| rocks       | 48  | 41  | 30  | 6          |
+| pool        | 0   | 50  | 89  | 7          |
+| vegetation  | 107 | 142 | 35  | 8          |
+| roof        | 70  | 70  | 70  | 9          |
+| wall        | 102 | 102 | 156 | 10         |
+| window      | 254 | 228 | 12  | 11         |
+| door        | 254 | 148 | 12  | 12         |
+| fence       | 190 | 153 | 153 | 13         |
+| fence-pole  | 153 | 153 | 153 | 14         |
+| person      | 255 | 22  | 96  | 15         |
+| dog         | 102 | 51  | 0   | 16         |
+| car         | 9   | 143 | 150 | 17         |
+| bicycle     | 119 | 11  | 32  | 18         |
+| tree        | 51  | 51  | 0   | 19         |
+| bald-tree   | 190 | 250 | 190 | 20         |
+| ar-marker   | 112 | 150 | 146 | 21         |
+| obstacle    | 2   | 135 | 115 | 22         |
+| conflicting | 255 | 0   | 0   | 23         |
 
 ## Data Preparation and Preprocessing
 
@@ -84,7 +83,6 @@ Data preparation and preprocessing are essential steps in deep learning projects
 - **Normalization:** scales the image pixel values to a standard range, by subtracting the mean and dividing by the standard deviation to help the model converge faster.
 - **Dataset split:** the dataset is split into training, validation, and test subsets using a 80-10-10 ratio.
 - **DataLoader:** the dataset is converted into Pytorch DataLoader to load the images and masks in batches during training.
-
 
 ## Data Augmentation
 
@@ -99,7 +97,6 @@ Data augmentation is a technique used to artificially increase the size of the t
 | ------------------------------- | ------------------------------- |
 | ![alt text](images/image-1.png) | ![alt text](images/image-2.png) |
 
-
 ## Implemented Models
 
 To implement the baseline model, pure Pytorch has been used. The more complex models are implemented using the [Segmentation Models](https://github.com/qubvel-org/segmentation_models.pytorch) library, which provides a collection of pre-trained deep learning models for semantic segmentation.
@@ -110,7 +107,6 @@ To implement the baseline model, pure Pytorch has been used. The more complex mo
 - **FPN (Feature Pyramid Networks)**: This model uses a top-down architecture with lateral connections to build high-level semantic feature maps at different scales, improving segmentation performance.
 - **DeepLabV3Plus**: A state-of-the-art model with an encoder-decoder architecture that uses atrous convolution to capture multi-scale contextual information.
 
-
 The implemented baseline and models references can be found in the following table, with the corresponding name in code, paper title, authors, year, conference, and DOI:
 
 | Model Name in Code | Paper Title                                                                       | Authors                                                                                     | Year | Conference                                                        | DOI                          |
@@ -118,9 +114,6 @@ The implemented baseline and models references can be found in the following tab
 | **SimpleFCN**      | Fully Convolutional Networks for Semantic Segmentation                            | Jonathan Long, Evan Shelhamer, Trevor Darrell                                               | 2015 | IEEE Conference on Computer Vision and Pattern Recognition (CVPR) | 10.1109/CVPR.2015.7298965    |
 | **FPN**            | Feature Pyramid Networks for Object Detection                                     | Tsung-Yi Lin, Piotr Dollar, Ross Girshick, Kaiming He, Bharath Hariharan and Serge Belongie | 2017 | IEEE Conference on Computer Vision and Pattern Recognition (CVPR) | 10.1109/CVPR.2017.106        |
 | **DeepLabV3Plus**  | Encoder-Decoder with Atrous Separable Convolution for Semantic Image Segmentation | Liang-Chieh Chen, Yukun Zhu, George Papandreou, Florian Schroff, Hartwig Adam               | 2018 | European Conference on Computer Vision (ECCV)                     | 10.1007/978-3-030-01234-2_23 |
-
-
-
 
 ## Models Training
 
@@ -134,7 +127,6 @@ Each model has been trained on a GPU, with the main traing elements defined belo
 
 - **Encoder Initialization:** the models are initialized with the weights of a pre-trained encoder (EfficientNet-B2) to speed up the training process and improve the generalization performance. The weights of the encoder are based on the ImageNet dataset, which contains a large number of diverse images. (Encoder used onlu for FPN and DeepLabV3Plus models).
 
-
 ## Models Evaluation Metrics
 
 As metrics to evaluate the models, the following are used:
@@ -143,20 +135,17 @@ As metrics to evaluate the models, the following are used:
 - **Pixel-wise Accuracy:** the percentage of correctly classified pixels in the segmentation mask, the higher the better.
 - **Mean IoU (Intersection over Union):** the ratio of the intersection area between the predicted mask and the ground truth mask to the union area of the two masks, the higher the better.
 
-
 ## Results
 
 A sample from the input images, ground truth masks, and predicted masks from the test-set are shown below for each model:
 
-| Model | ■Input | ■Truth | Output |
-| ----- | ------------- | -------------- | ----------------- |
-| **SimpleFCN** | ![alt text](images/input_1.png) | ![alt text](images/truth_1.png) | ![alt text](images/fcn_output_1.png) |
-| **FPN** | ![alt text](images/input_1.png) | ![alt text](images/truth_1.png) | ![alt text](images/fpn_output_1.png) |
-| **DeepLabV3Plus** | ![alt text](images/input_1.png) | ![alt text](images/truth_1.png) | ![alt text](images/v3_output_1.png) |
-
+| Model             | ■Input                          | ■Truth                          | Output                               |
+| ----------------- | ------------------------------- | ------------------------------- | ------------------------------------ |
+| **SimpleFCN**     | ![alt text](images/input_1.png) | ![alt text](images/truth_1.png) | ![alt text](images/fcn_output_1.png) |
+| **FPN**           | ![alt text](images/input_1.png) | ![alt text](images/truth_1.png) | ![alt text](images/fpn_output_1.png) |
+| **DeepLabV3Plus** | ![alt text](images/input_1.png) | ![alt text](images/truth_1.png) | ![alt text](images/v3_output_1.png)  |
 
 The metrics for the three models are shown in the following table:
-
 
 | Model Name in Code | Test Loss           | Pixel-wise Accuracy | Mean IoU            |
 | ------------------ | ------------------- | ------------------- | ------------------- |
@@ -166,17 +155,15 @@ The metrics for the three models are shown in the following table:
 
 ## Conclusions
 
-In this project, we developed and compared several deep learning models for semantic segmentation. Our findings revealed that the FPN (Feature Pyramid Network) and DeepLab V3+ models significantly outperformed the Simple FCN baseline model in both pixel-wise accuracy and mean Intersection over Union (IoU). 
+In this project, we developed and compared several deep learning models for semantic segmentation. Our findings revealed that the FPN (Feature Pyramid Network) and DeepLab V3+ models significantly outperformed the Simple FCN baseline model in both pixel-wise accuracy and mean Intersection over Union (IoU).
 
 Notably, the FPN model achieved the highest scores across all metrics, highlighting the superior performance and efficacy of advanced deep learning architectures in semantic segmentation tasks when compared to simpler structures like FCNs.
 
 Note that the DeepLabV3Plus model should be better than the FPN model, probably using more epochs we would see this to happen, but we lack of computational power.
 
-
 ## Future Work
 
 These days the challenges of the semantic segmentation are still open and there are many ways to improve the results. In this work, the computational resources were limited and the models were trained for a limited number of epochs. Using images of 512x512 pixels, the weights of the models can easly saturate the GPU memory, leading to a reduction of the batch size and the number of epochs. The models could be trained for more epochs with a larger batch size and a higher resolution of the images to improve the results. Moreover, the models could be fine-tuned on a larger dataset with more diverse images to improve their generalization performance. The models could also be optimized using a bigger encoder like EfficientNet-B7 to capture more complex features of the images, but this would require more computational resources, and to make a compromise between the images dimensions and the batch size.
-
 
 ## Gradio UI
 
