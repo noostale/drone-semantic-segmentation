@@ -8,8 +8,8 @@ The following repository contains the code to perform semantic segmentation of d
 
 - [Introduction](#introduction)
 - [Dataset](#dataset)
-      - [Sample Images and Masks](#sample-images-and-masks)
-      - [Classes Mapping](#classes-mapping)
+  - [Sample Images and Masks](#sample-images-and-masks)
+  - [Classes Mapping](#classes-mapping)
 - [Data Preparation and Preprocessing](#data-preparation-and-preprocessing)
 - [Data Augmentation](#data-augmentation)
 - [Implemented Models](#implemented-models)
